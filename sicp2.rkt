@@ -46,4 +46,20 @@
          and the whole experience of modern times
          has demonstrated its utter worthlessness.\n")
 
+(define (deriv exp var)
+  (let* 
+      ((variable? (lambda (v) (symbol? v)))
+       (same-variable? 
+        (lambda (v0 v1)
+          (and (variable? v0)
+               (variable? v1)
+               (eq? v0 v1)))))
+    (same-variable? exp var)))
+(deriv 'a 'b)
+(deriv 'a 'a)
+
+
+
+
+
 
