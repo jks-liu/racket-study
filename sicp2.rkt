@@ -118,8 +118,25 @@
                   (* (multiplier v) (multiplicand v)))
                  (else (error "Error prttify." v))))))) ; wrong here
 
+(define (make-leaf symbol weight)
+  (list 'leaf symbol weight))
+(define (leaf? l)
+  (eq? (car l) 'leaf))
+(define (symbol-leaf l)
+  (cadr l))
+(define (weight-leaf l)
+  (caddr l))
 
-
+(define (left-branch tree) (car tree))
+(define (right-branch tree) (cadr tree))
+(define (symbols tree)
+  (if (leaf? tree)
+      (list (symbol-leaf tree))
+      (caddr tree)))
+(define (weight tree)
+  (if (leaf? tree)
+      (weight-leaf tree)
+      (cadddr tree)))
 
 
 
